@@ -9,6 +9,8 @@ def train_agent():
     episodes = 1000
     batch_size = 32
 
+    
+
     for e in range(episodes):
         state = np.random.rand(1, state_size)  # Get initial state
         for time in range(500):  # 500 timesteps per episode
@@ -22,7 +24,7 @@ def train_agent():
             agent.remember(state, action, reward, next_state, done)
             state = next_state
             
-            
+
             if done:
                 print(f"episode: {e}/{episodes}, score: {time}")
                 break
