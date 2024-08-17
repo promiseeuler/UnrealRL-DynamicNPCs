@@ -10,6 +10,7 @@ UnrealRL-DynamicNPCs is a framework for implementing reinforcement learning mode
 - Tools for monitoring and analyzing NPC learning progress
 - Example implementations for common NPC types
 
+
 ## Prerequisites
 - Unreal Engine 4.27 or later
 - Python 3.7+
