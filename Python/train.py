@@ -1,6 +1,7 @@
 from rl_agents.dqn_agent import DQNAgent
 import numpy as np
 
+
 def train_agent():
     state_size = 4  # Example state size
     action_size = 2  # Example action size
@@ -9,7 +10,7 @@ def train_agent():
     episodes = 1000
     batch_size = 32
 
-    
+
 
     for e in range(episodes):
         state = np.random.rand(1, state_size)  # Get initial state
