@@ -23,12 +23,14 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Reinforcement Learning")
     void ReceiveReward(float Reward);
 
+
 protected:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reinforcement Learning")
     TArray<FString> ActionSpace;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reinforcement Learning")
     int32 StateSize;
+
 
 private:
     // Add private members as needed
