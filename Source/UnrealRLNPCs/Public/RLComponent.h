@@ -12,11 +12,13 @@ class UNREALRLNPCS_API URLComponent : public UActorComponent
 public:    
     URLComponent();
 
+
     virtual void BeginPlay() override;
     virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
     UFUNCTION(BlueprintCallable, Category = "Reinforcement Learning")
     void PerformAction(int32 ActionIndex);
+
 
     UFUNCTION(BlueprintCallable, Category = "Reinforcement Learning")
     void ReceiveReward(float Reward);
