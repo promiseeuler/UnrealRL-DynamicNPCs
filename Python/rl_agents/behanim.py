@@ -35,6 +35,16 @@ class ProceduralAnimationTrainer:
         self.memory.append((state, action, reward, next_state, done))
 
 
+    def act(self, state):
+        """
+        Determine the action to take based on the current state.
+        The action is selected either randomly (for exploration) or by following the current policy (for exploitation).
+        """
+        if np.random.rand() <= self.epsilon:
+            return np.random.randint(self.action_size)
+        act_values = self.model.predict(state)
+        return np.argmax(act_values[0])
+
 
 
 
