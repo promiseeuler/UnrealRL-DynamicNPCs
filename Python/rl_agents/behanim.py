@@ -103,6 +103,21 @@ class ProceduralAnimationTrainer:
         self.model.load_weights(name)
 
 
+    if __:
+    # Set up the environment configuration
+    env_config = {
+        'host': 'localhost',
+        'port': 8000,
+        'scene': 'MyScene',
+        'character': 'MyCharacter'
+    }
+
+    # Initialize the trainer
+    state_size = 12  # Example state size (e.g., joint angles, velocities)
+    action_size = 6  # Example action size (e.g., joint torques)
+    trainer = ProceduralAnimationTrainer(state_size, action_size, env_config)
+
+
 
 
  # Train the agent
