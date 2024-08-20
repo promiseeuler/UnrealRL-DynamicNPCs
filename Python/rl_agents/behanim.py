@@ -67,6 +67,30 @@ class ProceduralAnimationTrainer:
 
 
 
+    def train(self, episodes, batch_size):
+        """
+        Train the agent by interacting with the environment and performing experience replay.
+        """
+        for e in range(episodes):
+            state = self.env.reset()
+            state = np.reshape(state, [1, self.state_size])
+
+            for time in range(500):
+                action = self.act(state)
+                next_state, reward, done, _ = self.env.step(action)
+                next_state = np.reshape(next_state, [1, self.state_size])
+                self.remember(state, action, reward, next_state, done)
+                state = next_state
+
+                if done:
+                    print(f"episode: {e}/{episodes}, score: {time}")
+                    break
+
+                if len(self.memory) > batch_size:
+                    self.replay(batch_size)
+
+
+
 
  # Train the agent
     trainer.train(episodes=1000, batch_size=32)
