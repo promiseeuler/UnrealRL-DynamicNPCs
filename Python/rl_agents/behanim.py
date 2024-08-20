@@ -15,7 +15,18 @@ class ProceduralAnimationTrainer:
         self.learning_rate = 0.001
         self.model = self._build_model()
 
-
+    def _build_model(self):
+        """
+        Construct the neural network model for the reinforcement learning agent.
+        This example uses a simple feedforward neural network with two hidden layers.
+        """
+        model = tf.keras.Sequential([
+            tf.keras.layers.Dense(64, input_dim=self.state_size, activation='relu'),
+            tf.keras.layers.Dense(64, activation='relu'),
+            tf.keras.layers.Dense(self.action_size, activation='linear')
+        ])
+        model.compile(loss='mse', optimizer=tf.keras.optimizers.Adam(lr=self.learning_rate))
+        return model
 
 
 
