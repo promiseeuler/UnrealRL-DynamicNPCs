@@ -16,6 +16,10 @@ class ProceduralAnimationTrainer:
         self.model = self._build_model()
 
 
+
+
+
+
  # Train the agent
     trainer.train(episodes=1000, batch_size=32)
 
