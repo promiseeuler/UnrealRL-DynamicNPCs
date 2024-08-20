@@ -90,6 +90,19 @@ class ProceduralAnimationTrainer:
                     self.replay(batch_size)
 
 
+    def save(self, name):
+        """
+        Save the trained model to a file.
+        """
+        self.model.save_weights(name)
+
+    def load(self, name):
+        """
+        Load a pre-trained model from a file.
+        """
+        self.model.load_weights(name)
+
+
 
 
  # Train the agent
