@@ -44,6 +44,26 @@ class ProceduralAnimationTrainer:
             return np.random.randint(self.action_size)
         act_values = self.model.predict(state)
         return np.argmax(act_values[0])
+    
+    def replay(self, batch_size):
+        """
+        Perform experience replay to update the agent's policy.
+        Samples a batch of experiences from the agent's memory, computes the target Q-values, and updates the model.
+        """
+        if len(self.memory) < batch_size:
+            return
+
+        batch = np.random.sample(self.memory, batch_size)
+        states, actions, rewards, next_states, dones = zip(*batch)
+        states = np.array(states)
+        next_states = np.array(next_states)
+        targets = rewards + self.gamma * (np.amax(self.model.predict(next_states), axis=1) * (1 - np.array(dones)))
+        target_f = self.model.predict(states)
+        target_f[np.arange(batch_size), actions] = targets
+        self.model.fit(states, target_f, epochs=1, verbose=0)
+
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decay
 
 
 
