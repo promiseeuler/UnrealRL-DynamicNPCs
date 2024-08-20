@@ -27,6 +27,13 @@ class ProceduralAnimationTrainer:
         ])
         model.compile(loss='mse', optimizer=tf.keras.optimizers.Adam(lr=self.learning_rate))
         return model
+    
+    def remember(self, state, action, reward, next_state, done):
+        """
+        Store the experience tuple (state, action, reward, next_state, done) in the agent's memory.
+        """
+        self.memory.append((state, action, reward, next_state, done))
+
 
 
 
